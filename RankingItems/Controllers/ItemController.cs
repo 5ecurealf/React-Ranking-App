@@ -7,22 +7,24 @@ using RankingApp.Models;
 
 // For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
-namespace RankingItems.Controllers
-{
-    public class ItemController : Controller
+namespace RankingItems.Controllers { 
+
+[ApiController]
+[Route("[controller]")]
+public class ItemController : ControllerBase
     {
         private static readonly IEnumerable<ItemModel> Items = new[]
-{
-            new ItemModel{Id =1, Title = "The Godfather", ImageId=1, Ranking=0,ItemType=1 },
-            new ItemModel{Id =2, Title = "Highlander", ImageId=2, Ranking=0,ItemType=1 },
-            new ItemModel{Id =3, Title = "Highlander II", ImageId=3, Ranking=0,ItemType=1 },
-            new ItemModel{Id =4, Title = "The Last of the Mohicans", ImageId=4, Ranking=0,ItemType=1 },
-            new ItemModel{Id =5, Title = "Police Academy 6", ImageId=5, Ranking=0,ItemType=1 },
-            new ItemModel{Id =6, Title = "Rear Window", ImageId=6, Ranking=0,ItemType=1 },
-            new ItemModel{Id =7, Title = "Road House", ImageId=7, Ranking=0,ItemType=1 },
-            new ItemModel{Id =8, Title = "The Shawshank Redemption", ImageId=8, Ranking=0,ItemType=1 },
-            new ItemModel{Id =9, Title = "Star Treck IV", ImageId=9, Ranking=0,ItemType=1 },
-            new ItemModel{Id =10, Title = "Superman 4", ImageId=10, Ranking=0,ItemType=1 },
+        {
+            new ItemModel{Id = 1, Title = "The Godfather", ImageId=1, Ranking=0,ItemType=1 },
+            new ItemModel{Id = 2, Title = "Highlander", ImageId=2, Ranking=0,ItemType=1 },
+            new ItemModel{Id = 3, Title = "Highlander II", ImageId=3, Ranking=0,ItemType=1 },
+            new ItemModel{Id = 4, Title = "The Last of the Mohicans", ImageId=4, Ranking=0,ItemType=1 },
+            new ItemModel{Id = 5, Title = "Police Academy 6", ImageId=5, Ranking=0,ItemType=1 },
+            new ItemModel{Id = 6, Title = "Rear Window", ImageId=6, Ranking=0,ItemType=1 },
+            new ItemModel{Id = 7, Title = "Road House", ImageId=7, Ranking=0,ItemType=1 },
+            new ItemModel{Id = 8, Title = "The Shawshank Redemption", ImageId=8, Ranking=0,ItemType=1 },
+            new ItemModel{Id = 9, Title = "Star Treck IV", ImageId=9, Ranking=0,ItemType=1 },
+            new ItemModel{Id = 10, Title = "Superman 4", ImageId=10, Ranking=0,ItemType=1 },
             new ItemModel{Id = 11, Title = "Abbey Road", ImageId=11, Ranking=0,ItemType=2 },
             new ItemModel{Id = 12, Title = "Adrenalize", ImageId=12, Ranking=0,ItemType=2 },
             new ItemModel{Id = 13, Title = "Back in Black", ImageId=13, Ranking=0,ItemType=2 },
@@ -35,6 +37,7 @@ namespace RankingItems.Controllers
             new ItemModel{Id = 20, Title = "The Final Countdown", ImageId=20, Ranking=0,ItemType=2 }
 
         };
+
         // attribute states that there must be a int passed when making a request
         [HttpGet("{itemType:int}")]
         public ItemModel[] Get(int itemType)

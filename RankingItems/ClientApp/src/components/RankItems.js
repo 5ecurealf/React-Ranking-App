@@ -7,7 +7,7 @@ const RankItems = () => {
     const dataType = 1;
 
     useEffect(() => {
-        fetch('item/${dataType}')
+        fetch(`Item/${dataType}`)
             .then((results) => {
                 return results.json();
             })
@@ -24,3 +24,5 @@ const RankItems = () => {
         </main>
     )
 }
+
+export default RankItems
