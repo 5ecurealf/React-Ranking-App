@@ -44,6 +44,7 @@ public class ItemController : ControllerBase
         {
             // the param passed to the request will filter the data the client calls
             ItemModel[] items = Items.Where(i => i.ItemType == itemType).ToArray();
+            System.Threading.Thread.Sleep(2000);
             return items;
         }
     }
