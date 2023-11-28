@@ -17,6 +17,15 @@ code {
   border-color: #1861ac;
 }
 
+body{
+    font-family:Arial, Helvetica, sans-serif
+}
+
+main{
+    display:flex;
+    align-items:center;
+    flex-direction: column;
+}
 .items-not-ranked {
     display: flex;
     justify-content: space-evenly;
