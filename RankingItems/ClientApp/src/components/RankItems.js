@@ -1,6 +1,6 @@
 ﻿import React, { useState, useEffect } from 'react';
-import MovieImageArr from './MovieImages.js'
-import RankingGrid from './RankingGrid'
+import MovieImageArr from "./MovieImages.js"
+import RankingGrid from "./RankingGrid"
 
 const RankItems = () => {
     // item array set as empty by default denoted by the empty square brackets
@@ -67,7 +67,9 @@ const RankItems = () => {
                 {
                     (items.length > 0) ? items.map((item) =>
                         <div className = "unranked-cell">
-                            <img id={`item-${item.id}`} src={MovieImageArr.find(o => o.id === item.imageId)?.image} />
+                            <   img id={`item-${item.id}`} src={MovieImageArr.find(o => o.id === item.imageId)?.image}
+                                style={{ cursor: "pointer" }} draggable="true" onDragStart={drag}
+                            />
                         </div>
                     ) : <div>Loading ...</div>
                 }
@@ -76,4 +78,4 @@ const RankItems = () => {
     )
 }
 
-export default RankItems
+export default RankItems;
