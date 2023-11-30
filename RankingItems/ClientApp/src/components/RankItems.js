@@ -1,4 +1,4 @@
-﻿import React, { useState, useEffect } from 'react';
+﻿import { useEffect } from 'react';
 import RankingGrid from "./RankingGrid.js"
 import ItemCollection from "./ItemCollection.js"
 
@@ -54,8 +54,12 @@ const RankItems = ({ items, setItems, dataType, imgArr, localStorageKey }) => {
             .then(data => {
                 setItems(data);
             })
-    }, []);
+    }, [dataType]);
 
+    // save state to local storage everytime item collection state changes in memory 
+    useEffect(() => {
+        localStorage.setItem(localStorageKey, JSON.stringify(items));
+    }, [items]);
     return (
         <main>
             <RankingGrid items={items} imgArr={imgArr} drag={drag} allowDrop={allowDrop} drop={drop } />
