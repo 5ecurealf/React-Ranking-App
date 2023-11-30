@@ -1,14 +1,9 @@
 ﻿import React, { useState, useEffect } from 'react';
-import MovieImageArr from "./MovieImages.js"
 import RankingGrid from "./RankingGrid.js"
 import ItemCollection from "./ItemCollection.js"
 
-const RankItems = () => {
-    // item array set as empty by default denoted by the empty square brackets
-    // want items to be populated after the component calls the data from the server
-    const [items, setItems] = useState([]);
-    const dataType = 1;
-
+const RankItems = ({ items, setItems, dataType, imgArr, localStorageKey }) => {
+    
     // drag function: This function is called when the drag event is initiated.
     // It stores the ID of the draggable item in the dataTransfer object,
     // which can be retrieved later when the item is dropped.
@@ -63,8 +58,8 @@ const RankItems = () => {
 
     return (
         <main>
-            <RankingGrid items={items} imgArr={MovieImageArr} drag={drag} allowDrop={allowDrop} drop={drop } />
-            <ItemCollection items ={items} drag={drag} imgArr={MovieImageArr }/>
+            <RankingGrid items={items} imgArr={imgArr} drag={drag} allowDrop={allowDrop} drop={drop } />
+            <ItemCollection items={items} drag={drag} imgArr={imgArr }/>
         </main>
     )
 }
