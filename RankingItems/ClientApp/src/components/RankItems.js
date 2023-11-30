@@ -58,14 +58,20 @@ const RankItems = ({ items, setItems, dataType, imgArr, localStorageKey }) => {
 
     // save state to local storage everytime item collection state changes in memory 
     useEffect(() => {
-        localStorage.setItem(localStorageKey, JSON.stringify(items));
+        if (items != null) {
+            localStorage.setItem(localStorageKey, JSON.stringify(items));
+        }
     }, [items]);
+
+
     return (
-        <main>
-            <RankingGrid items={items} imgArr={imgArr} drag={drag} allowDrop={allowDrop} drop={drop } />
-            <ItemCollection items={items} drag={drag} imgArr={imgArr }/>
-        </main>
-    )
+        (items != null)?
+            <main>
+                <RankingGrid items={items} imgArr={imgArr} drag={drag} allowDrop={allowDrop} drop={drop } />
+                <ItemCollection items={items} drag={drag} imgArr={imgArr }/>
+            </main>
+            :<div>...Loading</div>
+   )
 }
 
 export default RankItems;

@@ -24,7 +24,7 @@ const RankingItemContainer = ({ dataType, imgArr }) => {
         localStorageKey = albumLocalStorageKey;
     }
     return (
-        <RankItems items={data} setItems ={setFunc} dataType={dataType} imgArr={imgArr} localStorageKey={localStorageKey }
+        <RankItems items={data} setItems ={setFunc} dataType={dataType} imgArr={imgArr} localStorageKey={localStorageKey }/>
     )
 }
 
