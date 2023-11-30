@@ -1,9 +1,15 @@
-﻿import { useEffect } from 'react';
+﻿import { useEffect, useState} from 'react';
 import RankingGrid from "./RankingGrid.js"
 import ItemCollection from "./ItemCollection.js"
 
 const RankItems = ({ items, setItems, dataType, imgArr, localStorageKey }) => {
-    
+
+
+    const [reload, setReload] = useState(false);
+
+    function Reload() {
+        setReload(true);
+    }
     // drag function: This function is called when the drag event is initiated.
     // It stores the ID of the draggable item in the dataTransfer object,
     // which can be retrieved later when the item is dropped.
@@ -59,19 +65,27 @@ const RankItems = ({ items, setItems, dataType, imgArr, localStorageKey }) => {
                 setItems(data);
             })
     }
+
+
     // save state to local storage everytime item collection state changes in memory 
     useEffect(() => {
         if (items != null) {
             localStorage.setItem(localStorageKey, JSON.stringify(items));
         }
+        setReload(false);
     }, [items]);
 
+
+    useEffect(() => {
+        getDataFromAPI();
+    },[reload])
 
     return (
         (items != null)?
             <main>
                 <RankingGrid items={items} imgArr={imgArr} drag={drag} allowDrop={allowDrop} drop={drop } />
-                <ItemCollection items={items} drag={drag} imgArr={imgArr }/>
+                <ItemCollection items={items} drag={drag} imgArr={imgArr} />
+                <button onClick={Reload} style={{"marginTop" : "10px"} }>Reload</button>
             </main>
             :<div>...Loading</div>
    )
