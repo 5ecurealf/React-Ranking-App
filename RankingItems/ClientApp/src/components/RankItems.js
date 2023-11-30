@@ -47,6 +47,10 @@ const RankItems = ({ items, setItems, dataType, imgArr, localStorageKey }) => {
 
 
     useEffect(() => {
+        if (items === null) { getDataFromAPI() }
+    }, [dataType]);
+
+    function getDataFromAPI() {
         fetch(`Item/${dataType}`)
             .then((results) => {
                 return results.json();
@@ -54,8 +58,7 @@ const RankItems = ({ items, setItems, dataType, imgArr, localStorageKey }) => {
             .then(data => {
                 setItems(data);
             })
-    }, [dataType]);
-
+    }
     // save state to local storage everytime item collection state changes in memory 
     useEffect(() => {
         if (items != null) {
